@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+body {
+    height: auto;
+}
+
+.border,
+a[href="/login"] {
+    display: none;
+}
+
+form {
+    width: 500px;
+    height: 300px;
+    border-radius: 8px;
+    background-color: rgba(19, 74, 126, 0.55);
+    text-align: center;
+    margin: 150px auto 0 auto;
+    padding: 40px;
+}
+
+.flex-outer {
+    padding: 0;
+}
+
+.flex-outer li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+}
+
+label {
+    width: 100%;
+}
+
+input {
+    border-radius: 5px;
+    border: #2c2b2b;
+    height: 30px;
+}
+
+#group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;;
+    width: 300px;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+#mdp {
+    font-size: 1em;
+    font-weight: normal;
+    transition: none;
+    text-decoration: underline;
+}
+
+button[type="button"] {
+    width: 300px;
+    margin-top: 20px;
+    padding: 10px 0;
+}
+
+button {
+    box-shadow: 3px 5px 5px #2c2b2b;
+}
