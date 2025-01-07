@@ -1,0 +1,38 @@
+<header xmlns:th="http://thymeleaf.org"
+        data-th-fragment="frag-entete">
+
+    <div class="d-flex m-2">
+        <div class="p-2 flex-grow-1">
+            <div class="row">
+                <div class="col-1"><a href="/"><img data-th-src="@{/images/logo.png}" alt="logo enchères"></a></div>
+                <div class="pt-5 col-2"><h1>Eni-Encheres</h1></div>
+            </div>
+
+        </div>
+
+        <div class="pt-5">
+            <ul class="nav justify-content-end">
+                <li class="nav-item ">
+                    <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">S'inscrire</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Se connecter</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <div class="d-flex justify-content-end ">
+        <div class="border border-black border-2 me-5 p-2 fw-bold">
+            <p class=""> Date du jour : <span th:text="${#dates.format(#dates.createNow(), 'dd/MM/yyyy')}"></span>
+            </p>
+            <p>Participant : <span></span></p>
+        </div>
+    </div>
+
+</header>

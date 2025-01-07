@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+header {
+    padding: 5px;
+}
+
+h1 {
+    font-size: 1.8em;
+    color:black;
+    text-decoration: none;
+    cursor:default;
+}
+
+img{
+    width: 5vw;
+    cursor:default;
+}
+
+
+.nav-link {
+    color: black;
+}
+
+a.nav-link{
+    font-size: 1.2em;
+    list-style: none;
+    color: black;
+}
+
+a.nav-link.active{
+    font-weight: bold;
+}
+a.nav-link:hover{
+    font-size: 1.4em;
+    opacity: 0.80;
+    color: black;
+}
+
+
+footer {
+    padding: 10px;
+    text-align: center;
+    color: white;
+    height: auto;
+}
