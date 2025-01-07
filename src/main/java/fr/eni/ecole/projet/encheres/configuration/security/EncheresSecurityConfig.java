@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class EncheresSecurityConfig {
-    private static final String SELECT_USER = "SELECT email, password FROM UTILISATEURS WHERE email = ?";
+    private static final String SELECT_USER = "SELECT email, mot_de_passe, 1 FROM UTILISATEURS WHERE email = ?";
     private static final String SELECT_ROLES = "SELECT u.email, r.role FROM UTILISATEURS u INNER JOIN roles r ON r.IS_ADMIN = u.administrateur WHERE u.email = ?";
 
     @Bean
