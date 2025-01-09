@@ -17,20 +17,24 @@
                     <li class="nav-item ">
                         <a class="nav-link active" aria-current="page" href="/">Accueil</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">S'inscrire - Se connecter</a>
+                    <li class="nav-item" data-th-if="${!#authorization.expression('isAuthenticated()')}">
+                        <a class="nav-link" href="/login" data-th-text="#{frag-entete.a.connexion}">S'inscrire - Se connecter</a>
+                    </li>
+                    <li data-th-if="${#authorization.expression('isAuthenticated()')}">
+                        <a class="nav-link" href="/logout" data-th-text="#{frag-entete.a.deconnexion}"></a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-
     <div class=" d-flex justify-content-end d-md-flex ">
         <div id="caseDateJourPseudo" class="caseDateJourPseudo border border-black border-2 me-5 p-2 fw-bold">
             <p class=""> Date du jour : <span th:text="${#dates.format(#dates.createNow(), 'dd/MM/yyyy')}"></span>
             </p>
-            <p>Participant : <span></span></p>
+            <th:block data-th-if="${#authorization.expression('isAuthenticated()')}">
+                <span data-th-text="#{frag-entete.security.pseudo} + ${#authentication.principal.username}"></span>
+            </th:block>
         </div>
     </div>
 
