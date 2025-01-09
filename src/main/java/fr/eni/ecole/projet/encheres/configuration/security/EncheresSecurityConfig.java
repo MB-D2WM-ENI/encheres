@@ -41,7 +41,11 @@ public class EncheresSecurityConfig {
         });
 
         // Permet d'afficher la page de connexion par défaut plutôt qu'une page blanche/noire (FilterChain)
-        http.formLogin(Customizer.withDefaults());
+        //http.formLogin(Customizer.withDefaults());
+        http.formLogin( form -> {
+            form.loginPage("/login").permitAll();
+            form.defaultSuccessUrl("/session").permitAll();
+        });
 
         // Permet la déconnexion avec nettoyage et suppression du cookie JSESSIONID et de revenir à la page d'accueil
         http.logout( logout -> {
