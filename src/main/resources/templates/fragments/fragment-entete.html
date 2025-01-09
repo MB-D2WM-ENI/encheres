@@ -1,39 +1,36 @@
-<header xmlns:th="http://thymeleaf.org"
-        data-th-fragment="frag-entete">
+<header xmlns:th="http://thymeleaf.org" data-th-fragment="frag-entete">
 
-    <div class="d-flex m-2">
-        <div class="p-2 flex-grow-1">
-            <div class="row">
-                <div class="col-1"><a href="/"><img data-th-src="@{/images/logo.png}" alt="logo enchères"></a></div>
-                <div class="align-content-end col-2"><h1>Eni-Encheres</h1></div>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="d-flex">
+                <img data-th-src="@{/images/logo.png}" class="img-fluid" alt="logo enchères">
+                <h1 class="align-self-end">Eni-Encheres</h1>
             </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-end">
+                    <li class="nav-item ">
+                        <a class="nav-link active" aria-current="page" href="/">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">S'inscrire - Se connecter</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
 
-        <div class="pt-5">
-            <ul class="nav justify-content-end">
-                <li class="nav-item ">
-                    <a class="nav-link active" aria-current="page" href="/">Accueil</a>
-                </li>
-                <li class="nav-item" data-th-if="${!#authorization.expression('isAuthenticated()')}">
-                    <a class="nav-link" href="/login" data-th-text="#{frag-entete.a.connexion}">S'inscrire - Se connecter</a>
-                </li>
-                <li data-th-if="${#authorization.expression('isAuthenticated()')}">
-                    <a class="nav-link" href="/logout" data-th-text="#{frag-entete.a.deconnexion}"></a>
-                </li>
-            </ul>
-        </div>
-    </div>
 
-    <div class="d-flex justify-content-end">
-        <div class="border border-black border-2 me-5 p-2 fw-bold">
-            <p class=""> Date du jour : <span data-th-text="${#dates.format(#dates.createNow(), 'dd/MM/yyyy')}"></span>
+    <div class=" d-flex justify-content-end d-md-flex ">
+        <div id="caseDateJourPseudo" class="caseDateJourPseudo border border-black border-2 me-5 p-2 fw-bold">
+            <p class=""> Date du jour : <span th:text="${#dates.format(#dates.createNow(), 'dd/MM/yyyy')}"></span>
             </p>
-            <p>
-                <th:block data-th-if="${#authorization.expression('isAuthenticated()')}">
-                    <span data-th-text="#{frag-entete.security.pseudo} + ${#authentication.principal.username}"></span>
-                </th:block>
-            </p>
+            <p>Participant : <span></span></p>
         </div>
     </div>
 

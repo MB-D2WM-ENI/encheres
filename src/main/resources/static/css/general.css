@@ -12,3 +12,47 @@ header li {
     font-family: Arial, Helvetica;
 }
 
+
+/* Mise en forme du formulaire d'inscription d'un utilisateur*/
+/* Mise en forme du formulaire d'inscription d'un utilisateur*/
+.mainNouveauProfil{
+    margin-top: -8vh;
+}
+
+.mainNouveauProfil h3 {
+    text-align: center;
+    padding-bottom: 5vh;
+}
+
+.formSuscribe {
+    width: 60vw;
+    text-align: center;
+    margin: auto;
+    padding:40px;
+    background-color: rgba(19,74,126,0.55);
+    border-radius: 8px;
+}
+
+.formSuscribe .labelProfil{
+    text-align: right;
+}
+
+.formSuscribe input{
+    border-radius: 5px;
+    border: 1px solid #8f8e8e;
+}
+
+.formSuscribe .inputProfil{
+    text-align: right;
+}
+
+
+.formSuscribe .btnFormSuscribe{
+    text-align: center;
+}
+
+.formSuscribe .btnFormSuscribe .btn{
+    text-align: center;
+    width: 15vw;
+    border: 1px solid #8f8e8e;
+}
