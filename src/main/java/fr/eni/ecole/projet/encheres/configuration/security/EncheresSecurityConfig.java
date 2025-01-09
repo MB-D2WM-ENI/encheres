@@ -3,7 +3,6 @@ package fr.eni.ecole.projet.encheres.configuration.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
@@ -16,8 +15,8 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class EncheresSecurityConfig {
-    private static final String SELECT_USER = "SELECT email, mot_de_passe, 1 FROM UTILISATEURS WHERE email = ?";
-    private static final String SELECT_ROLES = "SELECT u.email, r.role FROM UTILISATEURS u INNER JOIN roles r ON r.IS_ADMIN = u.administrateur WHERE u.email = ?";
+    private static final String SELECT_USER = "SELECT pseudo, mot_de_passe, 1 FROM UTILISATEURS WHERE pseudo = ?";
+    private static final String SELECT_ROLES = "SELECT u.pseudo, r.role FROM UTILISATEURS u INNER JOIN ROLES r ON r.is_admin = u.administrateur WHERE u.pseudo = ? ";
 
     @Bean
     UserDetailsManager userDetailsManager(DataSource dataSource) {
@@ -42,9 +41,10 @@ public class EncheresSecurityConfig {
 
         // Permet d'afficher la page de connexion par défaut plutôt qu'une page blanche/noire (FilterChain)
         //http.formLogin(Customizer.withDefaults());
+        // Permet d'afficher la page de connexion personnalisé plutôt que celle par défaut
         http.formLogin( form -> {
             form.loginPage("/login").permitAll();
-            form.defaultSuccessUrl("/session").permitAll();
+            form.defaultSuccessUrl("/").permitAll();
         });
 
         // Permet la déconnexion avec nettoyage et suppression du cookie JSESSIONID et de revenir à la page d'accueil

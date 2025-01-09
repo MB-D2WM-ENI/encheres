@@ -16,7 +16,43 @@
 <body>
 <main class="center-main">
     <section class="center-section">
-        <h1 style="text-align: center;"></h1>
+        <h1 style="text-align: center;" data-th-text="#{liste.encheres.title}"></h1>
+
+        <form>
+            <div>
+                <label for="recherche">Filtres : </label>
+                <input type="search" id="recherche" name="recherche" placeholder="Le nom de l'article contient" size="50">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-light shadow">Rechercher</button>
+                <button type="reset" class="btn btn-light shadow">Annuler</button>
+            </div>
+
+            <div>
+                <label for="categorie">Catégorie : </label>
+                <select name="categorie" id="categorie">
+                    <option value="1" selected>Toutes</option>
+                    <option value="2">Ameublement</option>
+                    <option value="3">Informatique</option>
+                    <option value="4">Sport & Loisir</option>
+                    <option value="5">Vêtements</option>
+                </select>
+            </div>
+        </form>
+
+        <section class="cards-troc">
+            <div class="card" style="width: 18rem;">
+                <img src="../static/images/HDD.png" class="card-img-top" alt="Disque Dur">
+                <div class="card-body">
+                    <h5 class="card-title">Disque Dur</h5>
+                    <p class="card-text">Prix : </p>
+                    <p class="card-text">Fin de l'enchère : </p>
+                    <p class="card-text">Vendeur : </p>
+                </div>
+            </div>
+        </section>
+
     </section>
 </main>
 

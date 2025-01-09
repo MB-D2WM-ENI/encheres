@@ -10,44 +10,42 @@ a[href="/login"] {
 }
 
 form {
-    width: 500px;
+    width: 450px;
     height: 300px;
     border-radius: 8px;
     background-color: rgba(19, 74, 126, 0.55);
-    text-align: center;
     margin: 150px auto 0 auto;
     padding: 40px;
 }
 
 .flex-outer {
     padding: 0;
+    margin: 0;
 }
 
 .flex-outer li {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 8px;
 }
 
 label {
-    width: 100%;
+    font-size: 1em;
 }
 
 input {
     border-radius: 5px;
-    border: #2c2b2b;
+    border: 1px solid #8f8e8e;
     height: 30px;
 }
 
 #group {
     display: flex;
     justify-content: space-between;
-    align-items: center;;
-    width: 300px;
     align-items: center;
-    margin: 0 auto;
-    margin-top: 20px;
+    width: 300px;
+    margin: 20px auto 0 auto;
 }
 
 #mdp {
@@ -57,12 +55,18 @@ input {
     text-decoration: underline;
 }
 
+button {
+    border: 1px solid #8f8e8e;
+}
+
+#creationCompte {
+    justify-content: center;
+}
+
 button[type="button"] {
     width: 300px;
     margin-top: 20px;
     padding: 10px 0;
+    justify-content: center;
 }
 
-button {
-    box-shadow: 3px 5px 5px #2c2b2b;
-}

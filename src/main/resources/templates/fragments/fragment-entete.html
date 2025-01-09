@@ -5,7 +5,7 @@
         <div class="p-2 flex-grow-1">
             <div class="row">
                 <div class="col-1"><a href="/"><img data-th-src="@{/images/logo.png}" alt="logo enchères"></a></div>
-                <div class="pt-5 col-2"><h1>Eni-Encheres</h1></div>
+                <div class="align-content-end col-2"><h1>Eni-Encheres</h1></div>
             </div>
 
         </div>
@@ -13,22 +13,27 @@
         <div class="pt-5">
             <ul class="nav justify-content-end">
                 <li class="nav-item ">
-                    <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                    <a class="nav-link active" aria-current="page" href="/">Accueil</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">S'inscrire - Se connecter</a>
+                <li class="nav-item" data-th-if="${!#authorization.expression('isAuthenticated()')}">
+                    <a class="nav-link" href="/login" data-th-text="#{frag-entete.a.connexion}">S'inscrire - Se connecter</a>
+                </li>
+                <li data-th-if="${#authorization.expression('isAuthenticated()')}">
+                    <a class="nav-link" href="/logout" data-th-text="#{frag-entete.a.deconnexion}"></a>
                 </li>
             </ul>
         </div>
-
     </div>
 
-
-    <div class="d-flex justify-content-end ">
+    <div class="d-flex justify-content-end">
         <div class="border border-black border-2 me-5 p-2 fw-bold">
-            <p class=""> Date du jour : <span th:text="${#dates.format(#dates.createNow(), 'dd/MM/yyyy')}"></span>
+            <p class=""> Date du jour : <span data-th-text="${#dates.format(#dates.createNow(), 'dd/MM/yyyy')}"></span>
             </p>
-            <p>Participant : <span></span></p>
+            <p>
+                <th:block data-th-if="${#authorization.expression('isAuthenticated()')}">
+                    <span data-th-text="#{frag-entete.security.pseudo} + ${#authentication.principal.username}"></span>
+                </th:block>
+            </p>
         </div>
     </div>
 

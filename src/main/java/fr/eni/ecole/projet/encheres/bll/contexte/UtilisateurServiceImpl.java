@@ -5,15 +5,15 @@ import fr.eni.ecole.projet.encheres.dal.UtilisateurDAO;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ContexteServiceImpl implements ContexteService {
-    private UtilisateurDAO utilisateurDAO;
+public class UtilisateurServiceImpl implements UtilisateurService {
+    private final UtilisateurDAO utilisateurDAO;
 
-    public ContexteServiceImpl(UtilisateurDAO utilisateurDAO) {
+    public UtilisateurServiceImpl(UtilisateurDAO utilisateurDAO) {
         this.utilisateurDAO = utilisateurDAO;
     }
 
     @Override
-    public Utilisateur charger(String email) {
-        return utilisateurDAO.read(email);
+    public Utilisateur charger(String pseudo) {
+        return utilisateurDAO.read(pseudo);
     }
 }
