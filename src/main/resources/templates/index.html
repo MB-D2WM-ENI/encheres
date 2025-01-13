@@ -7,52 +7,61 @@
         contenuPage=~{::main},
         ressourcesSupp=~{})}">
 
-
 <head>
-
-    <title></title>
+    <title>Liste des enchères</title>
 </head>
 
 <body>
-<main class="center-main">
+
+<main class="center-main liste_encheres">
     <section class="center-section">
         <h1 style="text-align: center;" data-th-text="#{liste.encheres.title}"></h1>
 
-        <form>
-            <div>
+        <form class="filtres_recherche">
+            <div class="filtre">
                 <label for="recherche">Filtres : </label>
-                <input type="search" id="recherche" name="recherche" placeholder="Le nom de l'article contient" size="50">
+                <div class="input-group mb-3 w-100">
+                    <span class="input-group-text" id="basic-addon1"><img src="/images/loupe.png" alt="icone-loupe" class="loupe"></span>
+                    <input type="search" class="form-control" id="recherche" name="recherche" placeholder="Le nom de l'article contient..." size="50">
+                </div>
+                <div class="div-categorie">
+                    <label for="categorie">Catégorie : </label>
+                    <select name="categorie" id="categorie" class="categorie">
+                        <option value="1" selected>Toutes</option>
+                        <option value="2">Ameublement</option>
+                        <option value="3">Informatique</option>
+                        <option value="4">Sport & Loisir</option>
+                        <option value="5">Vêtements</option>
+                    </select>
+                </div>
             </div>
 
-            <div>
+            <div class="boutons">
                 <button type="submit" class="btn btn-light shadow">Rechercher</button>
                 <button type="reset" class="btn btn-light shadow">Annuler</button>
-            </div>
-
-            <div>
-                <label for="categorie">Catégorie : </label>
-                <select name="categorie" id="categorie">
-                    <option value="1" selected>Toutes</option>
-                    <option value="2">Ameublement</option>
-                    <option value="3">Informatique</option>
-                    <option value="4">Sport & Loisir</option>
-                    <option value="5">Vêtements</option>
-                </select>
             </div>
         </form>
 
         <section class="cards-troc">
-            <div class="card" style="width: 18rem;">
-                <img src="../static/images/HDD.png" class="card-img-top" alt="Disque Dur">
-                <div class="card-body">
-                    <h5 class="card-title">Disque Dur</h5>
-                    <p class="card-text">Prix : </p>
-                    <p class="card-text">Fin de l'enchère : </p>
-                    <p class="card-text">Vendeur : </p>
+            <div class="card mb-3" data-th-each="item : ${articles}">
+                <div class="row g-0">
+                    <div class="image col-md-4">
+                        <img src="/images/marteau.png" class="card-img" alt="Disque Dur">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><a data-th-text="${item.nom}" class="lien-article" href="#"></a></h5>
+                            <div data-th-text="#{montant.article} + ${item.prixVente} + ' ' + #{montant.point}" class="card-text"></div>
+                            <div data-th-text="#{date.fin.enchere} + ${#temporals.format(item.dateFinEncheres, 'dd/MM/YYYY')}" class="card-text"></div>
+                            <div class="card-text">
+                                <span data-th-text="#{vendeur.article} + ' '"></span>
+                                <a data-th-text="${item.vendeur.pseudo}" class="lien-user" href="#"></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-
     </section>
 </main>
 

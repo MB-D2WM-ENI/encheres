@@ -24,6 +24,14 @@ public class ArticleAVendre {
     }
 
     // Insérer les constructeurs avec paramètres spécifiques si besoin
+    public ArticleAVendre(String nom, LocalDate dateFinEncheres, int statut, int prixInitial, int prixVente, Utilisateur vendeur) {
+        this.nom = nom;
+        this.dateFinEncheres = dateFinEncheres;
+        this.statut = statut;
+        this.prixInitial = prixInitial;
+        this.prixVente = prixVente;
+        this.vendeur = vendeur;
+    }
 
     public long getId() {
         return id;

@@ -32,9 +32,11 @@ public class EncheresSecurityConfig {
         http.authorizeHttpRequests(auth -> {
             // Accès à la page d'accueil sans être connecté
             auth.requestMatchers(HttpMethod.GET,"/").permitAll();
+            auth.requestMatchers(HttpMethod.GET,"/inscription").permitAll();
             // Accès aux fichiers CSS et Images
             auth.requestMatchers("/css/*").permitAll();
             auth.requestMatchers("/images/*").permitAll();
+            auth.requestMatchers("/js/*").permitAll();
             // Il faut être connecté pour toutes les autres URLs
             auth.anyRequest().authenticated();
         });

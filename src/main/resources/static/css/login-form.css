@@ -38,14 +38,44 @@ input {
     border-radius: 5px;
     border: 1px solid #8f8e8e;
     height: 30px;
+    outline: none;
+    padding: 0 8px;
 }
 
 #group {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 300px;
     margin: 20px auto 0 auto;
+}
+
+#inputUsername,
+#inputPwd {
+    width: 200px;
+}
+
+.password-container {
+    position: relative;
+
+}
+
+.password-container #eye {
+    position: absolute;
+    right: 0; /* Positionnez à droite */
+    top: 50%; /* Centrez verticalement */
+    transform: translateY(-50%); /* Ajustez pour l'alignement */
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+#ouvert-ferme {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
 
 #mdp {

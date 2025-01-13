@@ -28,9 +28,10 @@
                     <label for="inputUsername" data-th-text="#{login.username}"></label>
                     <input id="inputUsername" type="text" name="username" />
                 </li>
-                <li>
+                <li class="password-container">
                     <label for="inputPwd" data-th-text="#{login.pwd}"></label>
                     <input id="inputPwd" type="password" name="password" />
+                    <button type="button" id="eye"><img src="/images/close.png" alt="oeil ouvert/fermé" id="ouvert-ferme"></button>
                 </li>
                 <div id="group">
                     <button type="submit" class="btn btn-light shadow" data-th-text="#{login.button}"></button>
@@ -44,7 +45,6 @@
                 </li>
             </ul>
         </form>
-
     </main>
 </body>
 </html>

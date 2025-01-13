@@ -12,11 +12,186 @@ header li {
     font-family: Arial, Helvetica;
 }
 
+/* === Mise en forme de la liste des enchères === */
+
+.liste_encheres {
+    margin: 0 25px;
+}
+
+/* === Partie filtres de recherche === */
+
+.filtres_recherche {
+    display: flex;
+    margin-top: 50px;
+}
+
+.filtre {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    justify-content: center;
+    align-content: center;
+}
+
+.input-group {
+    width: 300px;
+}
+
+label[for="recherche"] {
+    font-weight: bold;
+}
+
+#basic-addon1 {
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: #9b9b9b;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-right: none;
+    padding-right: 10px;
+}
+
+.loupe {
+    width: 20px;
+}
+
+.form-control {
+    border-left: none;
+    margin-top: 10px;
+    padding-left: 0;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    font-size: 0.9em;
+    border-color: #9b9b9b;
+}
+
+.form-control:focus {
+    border-color: #9b9b9b;
+    box-shadow: none;
+}
+
+.div-categorie {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+label[for="categorie"] {
+    font-size: 0.9em;
+    margin-right: 40px;
+}
+
+#categorie {
+    padding: 5px 5px;
+    font-size: 0.9em;
+    width: 220px;
+    border-radius: 5px;
+    border: 1px solid #9b9b9b;
+}
+
+.boutons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-content: center;
+    margin-left: 25px;
+    width: 400px;
+}
+
+button[type="submit"],
+button[type="reset"] {
+    width: 200px;
+    margin: 5px;
+    border: 1px solid #626161;
+}
+
+.boutons button[type="submit"] {
+    background-color: rgba(19, 74, 126, 0.55);
+}
+
+.boutons button[type="reset"] {
+    background-color: rgba(166, 68, 68, 0.80);
+}
+
+/* === Partie cartes des enchères === */
+
+.row {
+    flex-wrap: nowrap;
+}
+
+.card {
+    width: 340px;
+    margin: 15px
+}
+
+.image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+}
+
+.card-img {
+    width: 120px;
+}
+
+.col-md-8 {
+    width: 220px;
+}
+
+.card-body {
+    width: 220px;
+    padding: 16px;
+}
+
+.card-body h5 {
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+.lien-article {
+    color: black;
+}
+
+.card-text {
+    font-size: 0.7em;
+}
+
+.cards-troc {
+    margin-top: 120px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* === MEDIA QUERIES DE LA LISTE DES ENCHERES === */
+
+@media screen and (min-width: 300px) and (max-width: 660px) {
+    .filtres_recherche {
+        flex-direction: column;
+        width: 410px;
+        margin: 50px auto;
+    }
+
+    .boutons {
+        margin: 10px 0 0 0;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .cards-troc {
+        width: 340px;
+        margin: 80px auto;
+    }
+
+}
+
+/* ==========================================================*/
 
 /* Mise en forme du formulaire d'inscription d'un utilisateur*/
-/* Mise en forme du formulaire d'inscription d'un utilisateur*/
-.mainNouveauProfil{
-    margin-top: -8vh;
+.mainNouveauProfil {
+    margin-top: -10vh;
 }
 
 .mainNouveauProfil h3 {
@@ -28,31 +203,96 @@ header li {
     width: 60vw;
     text-align: center;
     margin: auto;
-    padding:40px;
-    background-color: rgba(19,74,126,0.55);
-    border-radius: 8px;
-}
-
-.formSuscribe .labelProfil{
-    text-align: right;
-}
-
-.formSuscribe input{
+    background-color: rgba(19, 74, 126, 0.55);
+    padding: 40px;
     border-radius: 5px;
-    border: 1px solid #8f8e8e;
 }
 
-.formSuscribe .inputProfil{
+.formSuscribe label {
     text-align: right;
+    align-self: center;
 }
 
+.formSuscribe .inscription input::placeholder {
+    opacity: 0;
+}
 
-.formSuscribe .btnFormSuscribe{
+.formSuscribe .inscription input#rue::placeholder,
+.formSuscribe .inscription input#codePostal::placeholder,
+.formSuscribe .inscription input#ville::placeholder {
+    opacity: 1;
+}
+
+.formSuscribe input {
+    border-radius: 5px;
+    border: #2C2B2BFF;
+    padding: 10px;
+}
+
+.formSuscribe .btnFormSuscribe {
     text-align: center;
 }
 
-.formSuscribe .btnFormSuscribe .btn{
+.formSuscribe .btnFormSuscribe .btn {
     text-align: center;
     width: 15vw;
-    border: 1px solid #8f8e8e;
+}
+
+.inscription {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.formSuscribe .messageValidation {
+    width: 40vw;
+    text-align: center;
+    margin: auto;
+}
+
+.messageValidation.success {
+    background-color: green;
+    color: white;
+}
+
+.messageValidation.error {
+    background-color: red;
+    color: white;
+}
+
+@media only screen and (max-width: 1400px) {
+    .inscription {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }
+
+    .formSuscribe label {
+        display: none;
+    }
+
+    .formSuscribe label:nth-child(13) {
+        display: inline-block;
+        text-align: left;
+    }
+
+    .formSuscribe .inscription input::placeholder {
+        opacity: 1;
+    }
+
+    .formSuscribe span:nth-child(n+2) {
+        display: none;
+    }
+
+    .formSuscribe input {
+        padding: 10px;
+    }
+
+    .mainNouveauProfil {
+        margin-top: 0;
+    }
 }
