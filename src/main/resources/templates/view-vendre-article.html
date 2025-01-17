@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      data-th-replace="~{layouts/layout :: layout-trocencheres(
+					titrePage=~{:: title},
+					contenuPage=~{:: main},
+					ressourcesSupp=~{:: #ressources-css})}"
+>
+
+
+<title>Les objets sont nos amis - Vendre un article</title>
+
+<main class="vendreArticle">
+
+
+    <h2 class="text-center m-auto">PAGE EN COURS DE CONSTRUCTION</h2>
+
+    <h1 class="text-center m-auto pt-4">Nouvelle vente</h1>
+
+    <form id="cadreVente" class="cadreVente list-group mt-5" action="/vendreArticle" method="get" novalidate>
+        <ul class="list-unstyled">
+            <li class="row mb-3  justify-content-center">
+                <div class="col-12 col-md-6 d-flex align-items-center mb-2">
+                    <label for="nomArticle">Article (*) :</label>
+                    <input type="text" id="nomArticle" class="" name="nomArticle" title="Nom article"></input>
+                </div>
+                <div class="col-12 col-md-6 d-flex align-items-center mb-2">
+                    <label for="miseAPrix">Mise à prix(*) :</label>
+                    <input type="number" id="miseAPrix" class="" name="miseAPrix" title="Mise à prix"></input>
+                </div>
+            </li>
+
+        </ul>
+        <div class="text-center">
+            <button type="submit" id="btnSuivant"
+                    class="btn btnSuivant shadow p-3 bg-body-tertiary rounded"
+                    title="Bouton suivant">Suivant
+            </button>
+            <button type="submit" id="btnAnnulerVente"
+                    class="btn btnAnnulerVente shadow p-3 bg-body-tertiary rounded"
+                    title="Bouton annuler la vente">Annuler la ventre
+            </button>
+            <button type="submit" id="btnAnnuler"
+                    class="btn btnAnnuler shadow p-3 bg-body-tertiary rounded"
+                    title="Bouton annuler"><a href="/">Annuler</a>
+            </button>
+        </div>
+
+    </form>
+</main>
+
+
+<footer>
+
+
+</footer>
+
+</html>
