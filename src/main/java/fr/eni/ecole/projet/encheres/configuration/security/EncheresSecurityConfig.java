@@ -32,8 +32,22 @@ public class EncheresSecurityConfig {
         http.authorizeHttpRequests(auth -> {
             // Accès à la page d'accueil sans être connecté
             auth.requestMatchers(HttpMethod.GET,"/").permitAll();
-            auth.requestMatchers(HttpMethod.POST,"/recherche").hasAnyRole("ADMIN", "USER");
+            
+            // Accès à la page d'inscription sans être connecté
             auth.requestMatchers(HttpMethod.GET,"/inscription").permitAll();
+            auth.requestMatchers(HttpMethod.POST, "/inscription").permitAll();
+
+             // Accès à la page profil utilisateur en étant connecté
+            auth.requestMatchers("/profilUtilisateur").hasAnyRole("USER", "ADMIN");
+            
+            // Accès à la page modifier profil en étant connecté
+            auth.requestMatchers("/modifierProfilUtilisateur").hasAnyRole("USER", "ADMIN");
+            auth.requestMatchers("/modifierMotDePasse").hasAnyRole("USER", "ADMIN");
+            
+            // Accès à la page vendre un article en étant connecté
+            auth.requestMatchers("/vendreArticle").hasAnyRole("ADMIN","USER");
+            auth.requestMatchers(HttpMethod.POST,"/recherche").hasAnyRole("ADMIN", "USER");
+            
             // Accès aux fichiers CSS et Images
             auth.requestMatchers("/css/*").permitAll();
             auth.requestMatchers("/images/*").permitAll();
