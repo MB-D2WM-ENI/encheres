@@ -1,8 +1,11 @@
 package fr.eni.ecole.projet.encheres.bo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Categorie {
+public class Categorie implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private long id;
     private String libelle;
@@ -11,7 +14,10 @@ public class Categorie {
     public Categorie() {
     }
 
-    // Insérer les constructeurs avec paramètres spécifiques si besoin
+    public Categorie(long id, String libelle) {
+        this.id = id;
+        this.libelle = libelle;
+    }
 
     public long getId() {
         return id;

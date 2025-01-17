@@ -32,6 +32,7 @@ public class EncheresSecurityConfig {
         http.authorizeHttpRequests(auth -> {
             // Accès à la page d'accueil sans être connecté
             auth.requestMatchers(HttpMethod.GET,"/").permitAll();
+            auth.requestMatchers(HttpMethod.POST,"/recherche").hasAnyRole("ADMIN", "USER");
             auth.requestMatchers(HttpMethod.GET,"/inscription").permitAll();
             // Accès aux fichiers CSS et Images
             auth.requestMatchers("/css/*").permitAll();
@@ -41,9 +42,7 @@ public class EncheresSecurityConfig {
             auth.anyRequest().authenticated();
         });
 
-        // Permet d'afficher la page de connexion par défaut plutôt qu'une page blanche/noire (FilterChain)
-        //http.formLogin(Customizer.withDefaults());
-        // Permet d'afficher la page de connexion personnalisé plutôt que celle par défaut
+        // Permet d'afficher la page de connexion personnalisée plutôt que celle par défaut
         http.formLogin( form -> {
             form.loginPage("/login").permitAll();
             form.defaultSuccessUrl("/").permitAll();
@@ -58,6 +57,9 @@ public class EncheresSecurityConfig {
             logout.logoutSuccessUrl("/");
             logout.permitAll();
         });
+
+        // A ajouter obligatoirement car version 3.4.1 de spring boot + empêche la soumission de form en POST même avec permission ajouté
+        http.csrf(secu -> secu.disable());
 
         return http.build();
     }

@@ -33,7 +33,7 @@
             <p class=""> Date du jour : <span th:text="${#dates.format(#dates.createNow(), 'dd/MM/yyyy')}"></span>
             </p>
             <th:block data-th-if="${#authorization.expression('isAuthenticated()')}">
-                <span data-th-text="#{frag-entete.security.pseudo} + ${#authentication.principal.username}"></span>
+                <span id="utilisateur" data-th-text="#{frag-entete.security.pseudo} + ${#authentication.principal.username}"></span>
             </th:block>
         </div>
     </div>

@@ -25,12 +25,33 @@ header li {
     margin-top: 50px;
 }
 
-.filtre {
+.filtre, .achat-vente {
     display: flex;
     flex-direction: column;
     width: 400px;
     justify-content: center;
     align-content: center;
+}
+
+.achat-vente {
+    width: 250px;
+}
+
+.ensemble {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px
+}
+
+.filtre-cate,
+.filtre-liste {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.filtre-liste {
+    margin: 20px 0;
 }
 
 .input-group {
@@ -79,11 +100,10 @@ label[for="recherche"] {
 }
 
 label[for="categorie"] {
-    font-size: 0.9em;
     margin-right: 40px;
 }
 
-#categorie {
+#categorie, #select-achat, #select-vente {
     padding: 5px 5px;
     font-size: 0.9em;
     width: 220px;
@@ -160,7 +180,7 @@ button[type="reset"] {
 }
 
 .cards-troc {
-    margin-top: 120px;
+    margin-top: 60px;
     display: flex;
     flex-wrap: wrap;
 }

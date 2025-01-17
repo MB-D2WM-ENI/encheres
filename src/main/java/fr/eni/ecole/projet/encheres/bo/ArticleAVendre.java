@@ -1,9 +1,12 @@
 package fr.eni.ecole.projet.encheres.bo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class ArticleAVendre {
+public class ArticleAVendre implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private long id;
     private String nom;

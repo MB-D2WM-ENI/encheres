@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 
 
-<html xmlns:th="http://www.thymeleaf.org"
-      data-th-replace="~{layouts/layout :: layout-trocencheres(
-        titrePage=~{:: title},
-        contenuPage=~{::main},
-        ressourcesSupp=~{})}">
+<html xmlns:th="http://www.thymeleaf.org" data-th-replace="~{layouts/layout :: layout-trocencheres(
+                                                            titrePage=~{:: title},
+                                                            contenuPage=~{::main},
+                                                            ressourcesSupp=~{})}">
 
 <head>
-    <title>Liste des enchères</title>
+    <title data-th-text="#{title.page}"></title>
 </head>
 
 <body>
@@ -17,28 +16,58 @@
     <section class="center-section">
         <h1 style="text-align: center;" data-th-text="#{liste.encheres.title}"></h1>
 
-        <form class="filtres_recherche">
-            <div class="filtre">
-                <label for="recherche">Filtres : </label>
-                <div class="input-group mb-3 w-100">
-                    <span class="input-group-text" id="basic-addon1"><img src="/images/loupe.png" alt="icone-loupe" class="loupe"></span>
-                    <input type="search" class="form-control" id="recherche" name="recherche" placeholder="Le nom de l'article contient..." size="50">
+        <form class="filtres_recherche" id="formulaire" action="/recherche" method="post">
+            <div class="ensemble">
+                <div class="filtre-cate">
+                    <div class="filtre">
+                        <label for="recherche">Filtres : </label>
+                        <div class="input-group mb-3 w-100">
+                            <span class="input-group-text" id="basic-addon1"><img src="/images/loupe.png" alt="icone-loupe" class="loupe"></span>
+                            <input type="search" class="form-control" id="recherche" name="recherche" placeholder="Le nom de l'article contient..." size="50">
+                        </div>
+                        <div class="div-categorie">
+                            <label for="categorie">Catégorie : </label>
+                            <select name="categorie" id="categorie" class="categorie">
+                                <option value="0">Toutes</option>
+                                <option data-th-each="categorie : ${categoriesSession}" data-th-value="${categorie.id}" data-th-text="${categorie.libelle}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="boutons" class="boutons">
+                        <button type="submit" id="soumettre" class="btn btn-light shadow">Rechercher</button>
+                        <button type="reset" id="annuler" class="btn btn-light shadow">Annuler</button>
+                    </div>
                 </div>
-                <div class="div-categorie">
-                    <label for="categorie">Catégorie : </label>
-                    <select name="categorie" id="categorie" class="categorie">
-                        <option value="1" selected>Toutes</option>
-                        <option value="2">Ameublement</option>
-                        <option value="3">Informatique</option>
-                        <option value="4">Sport & Loisir</option>
-                        <option value="5">Vêtements</option>
-                    </select>
+                <div class="filtre-liste">
+                    <th:block data-th-if="${#authorization.expression('isAuthenticated()')}">
+                        <div class="achat-vente">
+                            <div class="titre-liste">
+                                <input type="radio" name="filtre" id="achat_article" value="achat_article" checked>
+                                <label for="achat_article">Achats</label>
+                            </div>
+                            <label for="select-achat">
+                                <select id="select-achat" name="selection">
+                                    <option value="1">Enchères ouvertes</option>
+                                    <option value="2" selected>Mes enchères en cours</option>
+                                    <option value="3">Mes enchères remportées</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="achat-vente">
+                            <div class="titre-liste">
+                                <input type="radio" name="filtre" id="vente_article" value="vente_article">
+                                <label for="vente_article">Ventes</label>
+                            </div>
+                            <label for="select-vente">
+                                <select id="select-vente" name="selection">
+                                    <option value="4">Mes ventes non débutées</option>
+                                    <option value="5" selected>Mes ventes en cours</option>
+                                    <option value="6">Mes ventes terminées</option>
+                                </select>
+                            </label>
+                        </div>
+                    </th:block>
                 </div>
-            </div>
-
-            <div class="boutons">
-                <button type="submit" class="btn btn-light shadow">Rechercher</button>
-                <button type="reset" class="btn btn-light shadow">Annuler</button>
             </div>
         </form>
 
@@ -50,7 +79,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title"><a data-th-text="${item.nom}" class="lien-article" href="#"></a></h5>
+                            <h5 class="card-title"><a data-th-text="${item.nom}" id="nom-article" class="lien-article" href="#"></a></h5>
                             <div data-th-text="#{montant.article} + ${item.prixVente} + ' ' + #{montant.point}" class="card-text"></div>
                             <div data-th-text="#{date.fin.enchere} + ${#temporals.format(item.dateFinEncheres, 'dd/MM/YYYY')}" class="card-text"></div>
                             <div class="card-text">
@@ -63,6 +92,10 @@
             </div>
         </section>
     </section>
+
+    <th:block th:src="@{/js/listeEncheres.js}">
+        <script th:src="@{/js/listeEncheres.js}"></script>
+    </th:block>
 </main>
 
 </body>
