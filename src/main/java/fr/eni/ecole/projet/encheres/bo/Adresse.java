@@ -5,12 +5,28 @@ import java.util.Objects;
 public class Adresse {
 
     private long id;
+
+    @NotBlank(message = "{NotBlank.utilisateur.adresse.nom}")
+    @Size(min = 4, max = 150)
     private String nom;
+
+    @NotBlank
+    @Size(min = 1, max = 5)
     private String codePostal;
+
+    @NotBlank
+    @Size(min = 4, max = 150)
     private String ville;
 
     // Constructeur par défaut
     public Adresse() {
+    }
+
+    public Adresse(String codePostal, long id, String nom, String ville) {
+        this.codePostal = codePostal;
+        this.id = id;
+        this.nom = nom;
+        this.ville = ville;
     }
 
     // Insérer les constructeurs avec paramètres spécifiques si besoin
