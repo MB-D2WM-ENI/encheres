@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      data-th-replace="~{layouts/layout :: layout-trocencheres(
+					titrePage=~{:: title},
+					contenuPage=~{:: main},
+					ressourcesSupp=~{:: #ressources-css})}"
+>
+
+
+<title>Les objets sont nos amis - Inscription</title>
+
+<body>
+<main class="mainNouveauProfil">
+
+    <h3>Nouveau Profil</h3>
+
+    <form id="formSuscribe" class="formSuscribe" data-th-action="@{/inscription}" data-th-object="${utilisateur}"
+          method="post" >
+        <div data-th-each="err : ${#fields.errors('global')}" data-th-text="#{${err}}"></div>
+
+        <div class="inscription">
+            <ul class="list-unstyled">
+                <!-- Première ligne: label input label input -->
+                <li class="row mb-3  justify-content-center">
+                    <div class="col-12 col-md-6 d-flex align-items-center mb-2">
+                        <label for="pseudo" class="form-label me-2">Pseudo (*) :</label>
+                        <input type="text" id="pseudo" class="form-control" title="pseudo" placeholder="Pseudo" required
+                               data-th-field="*{pseudo}"/>
+                    </div>
+                    <div class="col-12 col-md-6 d-flex align-items-center mb-2">
+                        <label for="nom" class="form-label me-2">Nom (*) :</label>
+                        <input type="text" id="nom" class="form-control" title="Nom" placeholder="Nom" required
+                               data-th-field="*{nom}"/>
+                    </div>
+                </li>
+                <li>
+                    <div data-th-if="${#fields.hasErrors('pseudo')}" data-th-each="err : ${#fields.errors('pseudo')}"
+                          data-th-text="${err}" class="messageValidation error"></div>
+                    <div data-th-if="${#fields.hasErrors('nom')}" data-th-each="err : ${#fields.errors('nom')}"
+                          data-th-text="${err}" class="messageValidation error"></div>
+                </li>
+
+                <!-- Deuxième ligne: label input label input -->
+                <li class="row mb-3">
+                    <div class="col-md-6 d-flex align-items-center mb-2">
+                        <label for="prenom" class="form-label me-2">Prénom (*) :</label>
+                        <input type="text" id="prenom" class="form-control" title="Prénom" placeholder="Prénom" required
+                               data-th-field="*{prenom}"/>
+                    </div>
+                    <div class="col-6 col-xs-12 d-flex align-items-center mb-2">
+                        <label for="email" class="form-label me-2">Email (*) :</label>
+                        <input type="email" id="email" class="form-control" title="Email" placeholder="Email" required
+                               data-th-field="*{email}"/>
+                    </div>
+                </li>
+                <li>
+                    <div data-th-if="${#fields.hasErrors('prenom')}" data-th-each="err : ${#fields.errors('prenom')}"
+                         data-th-text="${err}" class="messageValidation error"></div>
+                    <div data-th-if="${#fields.hasErrors('email')}" data-th-each="err : ${#fields.errors('email')}"
+                         data-th-text="${err}" class="messageValidation error"></div>
+                </li>
+
+                <!-- Troisième ligne: label input -->
+                <li class="row mb-3">
+                    <div class="col-6 col-xs-12 d-flex align-items-center mb-2">
+                        <label for="telephone" class="form-label me-2">Téléphone :</label>
+                        <input type="text" id="telephone" class="form-control" placeholder="Téléphone" title="Téléphone"
+                               data-th-field="*{telephone}"/>
+                    </div>
+                </li>
+                <li>
+                    <div data-th-if="${#fields.hasErrors('telephone')}" data-th-text="${err}"
+                         class="messageValidation error"></div>
+                </li>
+
+                <!-- Quatrième ligne: label input input input -->
+                <li class="row mb-3">
+                    <div class="col-12 col-md-6 d-flex align-items-center mb-2">
+                        <label for="rue" class="form-label me-2">Adresse (*) :</label>
+                        <input type="text" id="rue" class="form-control" placeholder="Rue" title="Rue" required
+                               data-th-field="*{adresse.nom}"/>
+                    </div>
+                    <div class="col-12 col-md-3 d-flex align-items-center mb-2">
+                        <!--                        <label for="codePostal" class="form-label me-2">Code Postal :</label>-->
+                        <input type="text" id="codePostal" class="form-control" placeholder="Code Postal"
+                               title="Code postal" data-th-field="*{adresse.codePostal}" required/>
+                    </div>
+                    <div class="col-12 col-md-3 d-flex align-items-center mb-2">
+                        <!--                        <label for="ville" class="form-label me-2">Ville :</label>-->
+                        <input type="text" id="ville" class="form-control" placeholder="Ville" title="Ville"
+                               data-th-field="*{adresse.ville}" required/>
+                    </div>
+                </li>
+                <li>
+                    <div data-th-if="${#fields.hasErrors('adresse.nom')}"
+                         data-th-each="err : ${#fields.errors('adresse.nom')}" data-th-text="${err}"
+                         class="messageValidation error"></div>
+                    <div data-th-if="${#fields.hasErrors('adresse.codePostal')}"
+                         data-th-each="err : ${#fields.errors('adresse.codePostal')}" data-th-text="${err}"
+                         class="messageValidation error"></div>
+                    <div data-th-if="${#fields.hasErrors('adresse.ville')}"
+                         data-th-each="err : ${#fields.errors('adresse.ville')}" data-th-text="${err}"
+                         class="messageValidation error"></div>
+                </li>
+
+                <!-- Cinquième ligne: label input label input -->
+                <li class="row mb-3">
+                    <div class="col-12 col-md-6 d-flex align-items-center mb-2">
+                        <label for="motDePasse" class="form-label me-2">Mot de passe (*) :</label>
+                        <input type="password" id="motDePasse" class="form-control" title="Mot de passe"
+                               placeholder="Mot de passe (*)" required data-th-field="*{motDePasse}"/>
+                    </div>
+                    <div class="col-12 col-md-6 d-flex align-items-center mb-2">
+                        <label for="confirmationMdp" class="form-label me-2">Confirmation (*) :</label>
+                        <input type="password" id="confirmationMdp" class="form-control" name="confirmationMdp"
+                               title="Confirmation de mot de passe" placeholder="Confirmation" required/>
+                    </div>
+                </li>
+                <li>
+                    <div data-th-if="${#fields.hasErrors('motDePasse')}"
+                         data-th-each="err : ${#fields.errors('motDePasse')}" data-th-text="${err}"
+                         class="messageValidation error"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="messageValidation" class="messageValidation text-center mt-2"></div>
+
+        <!-- Boutons de soumission -->
+        <div class="btnFormSuscribe row pt-3">
+            <div class="col">
+                <button type="submit" id="btnCreerProfil"
+                        class="btn btnCreerProfil shadow p-3 mb-2 bg-body-tertiary rounded"
+                        title="Bouton créer le profil">Créer
+                </button>
+            </div>
+            <div class="col">
+                <button type="button" id="btnAnnulerProfil"
+                        class="btn btnAnnulerCreerProfil shadow mt-1 p-3 bg-body-tertiary rounded"
+                        title="Bouton annuler">
+                    <a href="/">Annuler</a>
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+    <th:block th:src="@{/js/formInscription.js}">
+        <script th:src="@{/js/formInscription.js}"></script>
+    </th:block>
+
+
+
+</main>
+
+<footer>
+
+
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      data-th-replace="~{layouts/layout :: layout-trocencheres(
+					titrePage=~{:: title},
+					contenuPage=~{:: main},
+					ressourcesSupp=~{:: #ressources-css})}"
+>
+
+
+<title>Les objets sont nos amis - Modifier profil</title>
+
+<main class="mainModificationProfil">
+
+    <h3>Mon profil</h3>
+
+    <form id="formModifierProfil" class="formModifierProfil" data-th-action="@{/modifierUtilisateur}"
+          data-th-object="${utilisateur}" method="post">
+        <div data-th-each="err : ${#fields.errors('global')}" data-th-text="#{${err}}"></div>
+
+        <div class="inscription">
+            <ul class="list-unstyled">
+                <li class="row mb-3  justify-content-center">
+                    <div class="col-12 col-md-6 d-flex align-items-center mb-2">
+                        <label for="pseudo" class="form-label me-2">Pseudo :</label>
+                        <input id="pseudo" class="text-left ps-1" title="pseudo" placeholder="Pseudo" required
+                               data-th-field="*{pseudo}" readonly></input>
+                    </div>
+                    <div class="col-12 col-md-6 d-flex align-items-center mb-2">
+                        <label for="nom" class="form-label me-2">Nom (*) :</label>
+                        <input type="text" id="nom" class="form-control ps-1" title="Nom" placeholder="Nom" required
+                               data-th-field="*{nom}"/>
+                    </div>
+                </li>
+                <li>
+                    <div data-th-if="${#fields.hasErrors('pseudo')}" data-th-each="err : ${#fields.errors('pseudo')}"
+                         data-th-text="${err}" class="messageValidation error"></div>
+                    <div data-th-if="${#fields.hasErrors('nom')}" data-th-each="err : ${#fields.errors('nom')}"
+                         data-th-text="${err}" class="messageValidation error"></div>
+                </li>
+
+                <li class="row mb-3">
+                    <div class="col-md-6 d-flex align-items-center mb-2">
+                        <label for="prenom" class="form-label me-2">Prénom (*) :</label>
+                        <input type="text" id="prenom" class="form-control ps-1" title="Prénom" placeholder="Prénom"
+                               required
+                               data-th-field="*{prenom}"/>
+                    </div>
+                    <div class="col-6 col-xs-12 d-flex align-items-center mb-2">
+                        <label for="email" class="form-label me-2">Email (*) :</label>
+                        <input type="email" id="email" class="form-control ps-1" title="Email" placeholder="Email"
+                               required
+                               data-th-field="*{email}"/>
+                    </div>
+                </li>
+                <li>
+                    <div data-th-if="${#fields.hasErrors('prenom')}" data-th-each="err : ${#fields.errors('prenom')}"
+                         data-th-text="${err}" class="messageValidation error"></div>
+                    <div data-th-if="${#fields.hasErrors('email')}" data-th-each="err : ${#fields.errors('email')}"
+                         data-th-text="${err}" class="messageValidation error"></div>
+                </li>
+
+                <li class="row mb-3">
+                    <div class="col-6 col-xs-12 d-flex align-items-center mb-2">
+                        <label for="telephone" class="form-label me-2">Téléphone :</label>
+                        <input type="text" id="telephone" class="form-control ps-1" placeholder="Téléphone"
+                               title="Téléphone"
+                               data-th-field="*{telephone}"/>
+                    </div>
+                </li>
+                <li>
+                    <div data-th-if="${#fields.hasErrors('telephone')}" data-th-text="${err}"
+                         class="messageValidation error"></div>
+                </li>
+
+                <li class="row mb-3">
+                    <div class="col-12 col-md-6 d-flex align-items-center mb-2">
+                        <label for="rue" class="form-label me-2">Adresse (*) :</label>
+                        <input type="text" id="rue" class="form-control ps-1" placeholder="Rue" title="Rue" required
+                               data-th-field="*{adresse.nom}"/>
+                    </div>
+                    <div class="col-12 col-md-3 d-flex align-items-center mb-2">
+                        <!--                        <label for="codePostal" class="form-label me-2">Code Postal :</label>-->
+                        <input type="text" id="codePostal" class="form-control ps-1" placeholder="Code Postal"
+                               title="Code postal" data-th-field="*{adresse.codePostal}" required/>
+                    </div>
+                    <div class="col-12 col-md-3 d-flex align-items-center mb-2">
+                        <!--                        <label for="ville" class="form-label me-2">Ville :</label>-->
+                        <input type="text" id="ville" class="form-control ps-1" placeholder="Ville" title="Ville"
+                               data-th-field="*{adresse.ville}" required/>
+                    </div>
+                </li>
+                <li>
+                    <div data-th-if="${#fields.hasErrors('adresse.nom')}"
+                         data-th-each="err : ${#fields.errors('adresse.nom')}" data-th-text="${err}"
+                         class="messageValidation error"></div>
+                    <div data-th-if="${#fields.hasErrors('adresse.codePostal')}"
+                         data-th-each="err : ${#fields.errors('adresse.codePostal')}" data-th-text="${err}"
+                         class="messageValidation error"></div>
+                    <div data-th-if="${#fields.hasErrors('adresse.ville')}"
+                         data-th-each="err : ${#fields.errors('adresse.ville')}" data-th-text="${err}"
+                         class="messageValidation error"></div>
+                </li>
+                <li>
+                    <div class="col-6 col-xs-12 d-flex align-items-center mb-2">
+                        <label for="credit" class="me-2">Crédit :</label>
+                        <input id="credit" class="ps-1" name="credit"
+                               data-th-value="${utilisateur.credit}+' ' + #{frag-modifierProfil.points}"
+                               data-th-title="${utilisateur.credit}"
+                               data-th-field="*{credit}" readonly/>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div id="messageValidation" class="messageValidation text-center mt-2"></div>
+
+        <!-- Boutons de soumission -->
+        <div class="btnFormSuscribe row pt-3">
+            <div class="col">
+                <button type="submit" id="btnModifierProfil" name="action" value="modifier"
+                        class="btn btnModifierProfil shadow p-3 mb-2 bg-body-tertiary rounded"
+                        data-th-text="#{modifierUtilisateur.modifier}"
+                        title="Bouton modifier le profil">
+                </button>
+            </div>
+            <div class="col">
+                <a th:href="@{/modifierMotDePasse}"
+                   id="btnModifierMdp"
+                   class="btn btnModifierMdp shadow p-3 mb-2 bg-body-tertiary rounded"
+                   data-th-text="#{modifierUtilisateur.modifierMotDePasse}" title="Bouton modifier le mot de passe">
+                </a>
+            </div>
+            <div class="col">
+                <button type="button" id="btnSupprimerProfil" name="action" value="supprimer"
+                        class="btn btnSupprimerProfil shadow p-3 mb-2 bg-body-tertiary rounded"
+                        data-th-text="#{modifierUtilisateur.supprimer}"
+                        title="Bouton supprimer le profil">
+                </button>
+            </div>
+            <div class="col">
+                <a th:href="@{/profilUtilisateur}"
+                   id="btnAnnuler"
+                   class="btn btnAnnuler shadow p-3 mb-2 bg-body-tertiary rounded"
+                   title="Bouton annuler"
+                   data-th-text="#{modifierUtilisateur.annuler}">
+
+                </a>
+            </div>
+        </div>
+
+    </form>
+
+
+</main>
+
+<footer>
+
+
+</footer>
+
+</html>

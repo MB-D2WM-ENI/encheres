@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      data-th-replace="~{layouts/layout :: layout-trocencheres(
+					titrePage=~{:: title},
+					contenuPage=~{:: main},
+					ressourcesSupp=~{:: #ressources-css})}"
+>
+
+
+<title>Les objets sont nos amis - Profil Utilisateur</title>
+
+<main class="afficherProfilUtilisateur">
+
+    <h1 class="text-center m-auto" data-th-text="${utilisateur.pseudo}" data-th-title="${utilisateur.pseudo}"></h1>
+
+    <form id="cadreProfil" class="cadreProfil list-group mt-5" action="/modifierUtilisateur" data-th-object="${utilisateur}" method="get" novalidate>
+        <ul>
+            <li>
+                <label for="nom">Nom :</label>
+                <p id="nom" name="nom" data-th-text="${utilisateur.nom}" data-th-field="${utilisateur.nom}" data-th-title="${utilisateur.nom}"></p>
+            </li>
+            <li>
+                <label for="prenom">Prénom :</label>
+                <p id="prenom" name="prenom" data-th-text="${utilisateur.prenom}" data-th-field="${prenom}" data-th-title="${prenom}"></p>
+            </li>
+            <li>
+                <label for="email">Email :</label>
+                <p id="email" name="email" data-th-text="${utilisateur.email}" data-th-field="${utilisateur.email}" data-th-title="${utilisateur.email}"></p>
+            </li>
+            <li>
+                <label for="telephone">Téléphone :</label>
+                <p id="telephone" name="telephone" data-th-text="${utilisateur.telephone}" data-th-field="${utilisateur.telephone}" data-th-title="${utilisateur.telephone}"></p>
+            </li>
+        </ul>
+        <div class="text-center">
+            <button type="submit" id="btnModifierProfil"
+                    class="btn btnCreerProfil shadow p-3 bg-body-tertiary rounded"
+                    title="Bouton créer le profil">Modifier
+            </button>
+        </div>
+
+    </form>
+</main>
+
+
+<footer>
+
+
+</footer>
+
+</html>
