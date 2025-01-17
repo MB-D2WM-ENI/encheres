@@ -4,20 +4,46 @@ import java.util.Objects;
 
 public class Utilisateur {
 
+    @NotBlank
+    @Size(min = 4, max=250)
+    @Pattern(regexp = "^[a-zA-Z0-9_]*$")
     private String pseudo;
+
+    @NotBlank
+    @Size(min = 4, max=250)
     private String nom;
+
+    @NotBlank
+    @Size(min = 2, max=250)
     private String prenom;
+
+    @NotBlank
+    @Email
     private String email;
+    
     private String telephone;
     private String motDePasse;
     private int credit;
     private boolean admin;
 
     // Association unidirectionnelle
+    @NotNull
     private Adresse adresse;
 
-    // Constructeur par défaut
+     // Constructeur par défaut
     public Utilisateur() {
+        adresse = new Adresse();
+        credit = 10;
+    }
+
+     public Utilisateur( String pseudo, String prenom, String nom, String email, int credit, Adresse adresse, String telephone) {
+        this.pseudo = pseudo;
+        this.prenom = prenom;
+        this.nom = nom;
+        this.email = email;
+        this.credit = credit;
+        this.adresse = adresse;
+        this.telephone = telephone;
     }
 
     // Insérer les constructeurs avec paramètres spécifiques si besoin
