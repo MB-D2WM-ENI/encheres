@@ -258,12 +258,13 @@ button[type="reset"] {
     width: 15vw;
 }
 
-.inscription {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+.formSuscribe .btnAnnulerCreerProfil a{
+    text-decoration: none;
+    color: black;
+}
+
+.inscription ul li label{
+    width: 20vw;
 }
 
 .formSuscribe .messageValidation {
@@ -282,13 +283,116 @@ button[type="reset"] {
     color: white;
 }
 
+
+
+/*====================================*/
+/* Mise en forme de la page qui affiche le profil */
+.afficherProfilUtilisateur ul li{
+    display:flex;
+    list-style: none;
+    padding: 0px 20px;
+}
+
+.cadreProfil{
+    width: 40vw;
+    text-align: center;
+    margin: auto;
+    background-color: rgba(19, 74, 126, 0.55);
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.cadreProfil label{
+    width: 20vw;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.cadreProfil p {
+    width: 20vw;
+    text-align: left;
+}
+
+
+/*====================================*/
+/* Mise en forme de la page Modifier profil utilisateur */
+/* Mise en forme de la page Modifier mot de passe */
+.mainModificationProfil h3{
+    text-align: center;
+    padding-bottom: 5vh;
+}
+
+.formModifierProfil,
+.formModifierMdp{
+
+    text-align: center;
+    margin: auto;
+    background-color: rgba(19, 74, 126, 0.55);
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.formModifierProfil{
+    width: 90vw;
+}
+
+.formModifierMdp{
+    width: 60vw;
+}
+
+.formModifierProfil ul li label{
+    width: 15vw;
+    text-align: right;
+    margin-right: 10px;
+    margin-bottom: 0px;
+}
+
+.formModifierMdp ul li label{
+    width: 25vw;
+    text-align: right;
+    margin-right: 20px;
+    margin-bottom: 0px;
+}
+
+.formModifierProfil input,
+.formModifierMdp input{
+    width: 25vw;
+    text-align: left;
+    border-radius: 0px;
+}
+
+
+.formModifierProfil button{
+    width: 15vw;
+}
+
+.formModifierProfil .btnModifierMdp,
+.formModifierProfil .btnAnnuler,
+.formModifierMdp .btnModifierMdp,
+.formModifierMdp .btnAnnulerModifierMdp{
+    text-decoration: none;
+    color: black;
+    width: 15vw;
+}
+
+
+/* Page de vente d'article */
+/* Créer un article */
+.cadreVente{
+    width: 60vw;
+    text-align: center;
+    margin: auto;
+    background-color: rgba(19, 74, 126, 0.55);
+    padding: 40px;
+    border-radius: 5px;
+}
+
+
+
 @media only screen and (max-width: 1400px) {
-    .inscription {
+    .inscription ul li{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(10, 1fr);
-        grid-column-gap: 20px;
-        grid-row-gap: 20px;
     }
 
     .formSuscribe label {
