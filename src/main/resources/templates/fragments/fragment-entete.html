@@ -17,8 +17,14 @@
                     <li class="nav-item ">
                         <a class="nav-link active" aria-current="page" href="/">Accueil</a>
                     </li>
+                    <li data-th-if="${#authorization.expression('isAuthenticated()')}">
+                        <a class="nav-link" href="/vendreArticle" data-th-text="#{frag-entete.vendreUnArticle}">Vendre un article</a>
+                    </li>
                     <li class="nav-item" data-th-if="${!#authorization.expression('isAuthenticated()')}">
                         <a class="nav-link" href="/login" data-th-text="#{frag-entete.a.connexion}">S'inscrire - Se connecter</a>
+                    </li>
+                    <li data-th-if="${#authorization.expression('isAuthenticated()')}">
+                        <a class="nav-link" href="/profilUtilisateur" data-th-text="#{frag-entete.monProfil}">Mon profil</a>
                     </li>
                     <li data-th-if="${#authorization.expression('isAuthenticated()')}">
                         <a class="nav-link" href="/logout" data-th-text="#{frag-entete.a.deconnexion}"></a>
