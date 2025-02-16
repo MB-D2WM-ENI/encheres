@@ -1,4 +1,4 @@
-## Projet n°2 : Développement d'une application web avec Java Spring Boot
+# Projet n°2 : Développement d'une application web avec Java Spring Boot
 
 ## Les objectifs
 
