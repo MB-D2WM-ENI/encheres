@@ -22,4 +22,4 @@ Par défaut, 10 points sont offerts pour toute inscription.
 
 ---
 
-===================================== &copy; ENI - Tous droits réservés ====================================
+========================= © ENI - Tous droits réservés =========================
