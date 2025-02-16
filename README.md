@@ -19,3 +19,7 @@ La valeur des articles sera déterminée par un système d’enchères basé sur
 Les points sont gagnés en vendant des objets, puis peuvent être utilisés pour acquérir d’autres objets.
 
 Par défaut, 10 points sont offerts pour toute inscription.
+
+---
+
+===================================== &copy; ENI - Tous droits réservés ====================================
